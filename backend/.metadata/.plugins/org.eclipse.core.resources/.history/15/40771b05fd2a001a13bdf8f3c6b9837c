@@ -1,0 +1,55 @@
+package com.example.demo.pojo;
+
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Subject {
+    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	
+	
+	@Column(name="subject_name")
+	private String subName;
+	
+	private Set<Test> tests;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getSubName() {
+		return subName;
+	}
+
+	public void setSubName(String subName) {
+		this.subName = subName;
+	}
+
+	@Override
+	public String toString() {
+		return "Subject [id=" + id + ", subName=" + subName + "]";
+	}
+
+	public Subject(int id, String subName) {
+		super();
+		this.id = id;
+		this.subName = subName;
+	}
+	public Subject()
+	{
+		
+	}
+}

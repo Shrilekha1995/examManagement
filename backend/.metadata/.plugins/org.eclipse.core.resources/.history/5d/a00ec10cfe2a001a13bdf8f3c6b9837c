@@ -1,0 +1,57 @@
+package com.example.demo.pojo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Test {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	
+	private String testName;
+	
+	@ManyToOne
+	@JoinColumn(name="cart_id", nullable=false)
+	private Subject cart1;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTestName() {
+		return testName;
+	}
+
+	public void setTestName(String testName) {
+		this.testName = testName;
+	}
+
+	@Override
+	public String toString() {
+		return "Test [id=" + id + ", testName=" + testName + "]";
+	}
+
+	public Test(int id, String testName) {
+		super();
+		this.id = id;
+		this.testName = testName;
+	}
+	
+	
+	public Test()
+	{
+		
+	}
+
+}

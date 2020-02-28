@@ -1,0 +1,102 @@
+Select subject:
+<select (change)="getAllTestbySId($event.target.value)">
+    <option value="0">Select</option>
+    <option  *ngFor='let subject of subjects' [value]=subject.id>
+        {{subject.subName}}
+    </option>
+
+
+</select>
+
+<br><br>
+Select Test:
+<select (change)="getAllQuestionByTId($event.target.value)" >
+     <option>Select</option>
+    <option *ngFor='let test of tests' [value]=test.id>
+        {{test.testName}}
+        </option>
+</select>
+<br>
+<br>
+<div [hidden]='this.subjectService.displayFlag'>
+<table border="1">
+    <tr><th>questionNo</th>
+    <th>question</th>
+    <th>optA</th>
+    <th>optB</th>
+    <th>optC</th>
+    <th>optD</th>
+    <th>ans</th>
+    
+    </tr>
+    <tr *ngFor='let question of questions;let i = index'>
+        <td>{{i+1}}</td>
+          <td> <input type="text" [disabled]='id!==question.questionNo'  class="form-control" [(ngModel)]="question.question" name="question.question"></td>
+         <td> <input type="text"  [disabled]='id!==question.questionNo' class="form-control" [(ngModel)]="question.optA" name="question.optA"></td>
+         <td> <input type="text"  [disabled]='id!==question.questionNo' class="form-control" [(ngModel)]="question.optB" name="question.optB"></td>
+         <td> <input type="text"  [disabled]='id!==question.questionNo' class="form-control" [(ngModel)]="question.optC" name="question.optC"></td>
+         <td> <input type="text"  [disabled]='id!==question.questionNo' class="form-control" [(ngModel)]="question.optD" name="question.optD"></td>
+         <td> <input type="text"  [disabled]='id!==question.questionNo' class="form-control" [(ngModel)]="question.ans" name="question.ans"></td>
+        <td *ngIf='id===question.questionNo'><button (click)='updateQuestion(question)'>Update</button></td>
+        <td *ngIf='id!==question.questionNo'><button (click)='editQuestion(question)'>Edit</button></td>
+        <td><button (click)='DeleteQuestion(question.questionNo)'>Delete</button></td>
+    </tr>
+ 
+</table>
+ 
+            <button (click)='onAddQuestion()'>Add Question</button>
+   
+
+</div>
+
+
+<div [hidden]='this.subjectService.AddFlag'>
+<form>
+    <div class="form-group">
+    <table><tr>
+        <th>
+            Question
+        </th>
+         <th>
+            Option A
+       </th>
+       <th>
+            Option B
+        </th>
+        <th>
+            Option C
+       </th>
+        <th>
+            Option D
+        </th>
+        <th>
+            Right Answer
+        </th>
+        </tr>
+        <tr>
+            <td>
+             <input type="text"   class="form-control" id="question" [(ngModel)]="questionM.question" name="question">
+            </td>
+            <td>
+             <input type="text"   class="form-control" id="optA" [(ngModel)]="questionM.optA" name="optA">
+            </td>
+            <td>
+             <input type="text"  class="form-control" id="optB" [(ngModel)]="questionM.optB" name="optB">
+            </td>
+            <td>
+             <input type="text" class="form-control" id="optC" [(ngModel)]="questionM.optC"  name="optC">
+            </td>
+            <td>
+             <input type="text" class="form-control" id="optD" [(ngModel)]="questionM.optD" name="optD">
+            </td>
+              <td>
+             <input type="text"  class="form-control" id="ans" [(ngModel)]="questionM.ans" name="ans">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" (click)="onSubmit()"></td>
+        </tr>
+    </table>
+    </div>
+</form>
+</div>

@@ -1,0 +1,14 @@
+package com.example.demo.pojo;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Test {
+	
+	private int id;
+	
+	private String testName;
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package com.example.demo.pojo;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Subject {
+
+	private int id;
+	
+	@Column(name="subject_name")
+	private String subName;
+}

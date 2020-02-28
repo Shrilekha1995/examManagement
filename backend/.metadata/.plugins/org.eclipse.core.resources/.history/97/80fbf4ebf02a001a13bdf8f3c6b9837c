@@ -1,0 +1,16 @@
+package com.example.demo.pojo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+
+@Entity
+public class Subject {
+    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name="subject_name")
+	private String subName;
+}
